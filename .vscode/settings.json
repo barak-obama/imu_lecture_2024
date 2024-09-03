@@ -1,0 +1,65 @@
+{
+  "latex-workshop.intellisense.citation.backend": "biblatex",
+  "latex-workshop.latex.clean.method": "glob",
+  "latex-workshop.latex.outDir": "%DIR%/build/",
+  "latex-workshop.latex.autoClean.run": "onBuilt",
+  "latex-workshop.view.pdf.viewer": "tab",
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "xelatex -> biber -> xelatex",
+      "tools": ["xelatex", "xelatex", "xelatex", "mv_pdf"]
+    }
+  ],
+  "latex-workshop.latex.recipe.default": "xelatex -> biber -> xelatex",
+  "latex-workshop.latex.tools": [
+    {
+      "name": "latexmk",
+      "command": "latexmk",
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "-pdf",
+        "-output-directory=%OUTDIR%",
+        "%DOC%"
+      ],
+      "env": {}
+    },
+    {
+      "name": "pdflatex",
+      "command": "pdflatex",
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "-output-directory=%OUTDIR%",
+        "%DOC%"
+      ],
+      "env": {}
+    },
+    {
+      "name": "xelatex",
+      "command": "xelatex",
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "-output-directory=%OUTDIR%",
+        "%DOC%"
+      ],
+      "env": {}
+    },
+    {
+      "name": "biber",
+      "command": "biber",
+      "args": ["--output-directory=%OUTDIR%", "%DOCFILE%"],
+      "env": {}
+    },
+    {
+      "name": "mv_pdf",
+      "command": "cp",
+      "args": ["%OUTDIR%/%DOCFILE%.pdf", "%DIR%/%DOCFILE%.pdf"],
+      "env": {}
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+
+\documentclass{beamer}[10]
+\usepackage{pgf}
+\usepackage[danish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{beamerthemesplit}
+\usepackage{graphics,epsfig, subfigure}
+\usepackage{url}
+\usepackage{srcltx}
+\usepackage{hyperref}
+\usepackage{bookmark}
+
+\definecolor{kugreen}{RGB}{50,93,61}
+\definecolor{kugreenlys}{RGB}{132,158,139}
+\definecolor{kugreenlyslys}{RGB}{173,190,177}
+\definecolor{kugreenlyslyslys}{RGB}{214,223,216}
+\setbeamercovered{invisible}
+\mode<presentation>
+\usetheme[numbers,totalnumber,compress,sidebarshades]{PaloAlto}
+\setbeamertemplate{footline}[frame number]
+
+  \usecolortheme[named=kugreen]{structure}
+  \useinnertheme{circles}
+  \usefonttheme[onlymath]{serif}
+  \setbeamercovered{invisible}
+  \setbeamertemplate{blocks}[rounded][shadow=true]
+
+\logo{\includegraphics[width=0.8cm]{KULogo}}
+%\useoutertheme{infolines} 
+\title{Equations in Hyperbolic(-esque) Groups}
+\author{Barak Ohana}
+\institute{The Hebrew University of Jerusalem}
+\date{9 Sep 2024}
+
+\newcommand{\sol}{\text{V}_{\Gamma}}
+
+
+
+\begin{document}
+\frame{\titlepage \vspace{-0.5cm}}
+
+% \frame
+% {
+% \frametitle{Overview}
+% \tableofcontents%[pausesection]
+% }
+
+\section{First section}
+
+\frame{
+    \frametitle{Equations in Groups}
+    \begin{itemize}
+    
+    
+        \item Let $\Gamma$  be a group, and $\Sigma\left(x_{1},\ldots,x_{d}\right)$ a system of equation on d variables. We define the \textbf{set of solution of $\Sigma$ in $\Gamma$} to be the set
+            \begin{equation*}
+                \sol\left(\Sigma\right)=\left\{ \left(g_{1},\ldots,g_{d}\right)\in\Gamma^{d}\mid\Sigma\left(g_{1},\ldots,g_{d}\right)=_{\Gamma}1\right\} 
+            \end{equation*}
+
+            \pause
+        \item fsadas
+
+
+    \end{itemize}
+
+}
+
+
+\subsection{Sample subsection}
+
+\frame{
+\frametitle{Sample Frame Title No. 2}
+\begin{itemize}
+\item First item
+\item Second item
+\item Third item
+\end{itemize}
+}
+
+\section{Second section}
+
+\frame{
+\frametitle{Sample Frame Title No. 3}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+\begin{block}{Something important}
+Einstein's formula
+$$E=mc^2$$
+\end{block}
+}
+
+
+\end{document}

@@ -1,4 +1,0 @@
-\babel@toc {danish}{}
-\beamer@sectionintoc {1}{First section}{2}{0}{1}
-\beamer@subsectionintoc {1}{1}{Sample subsection}{4}{0}{1}
-\beamer@sectionintoc {2}{Second section}{5}{0}{2}

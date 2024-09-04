@@ -7,7 +7,7 @@
   "latex-workshop.latex.recipes": [
     {
       "name": "xelatex -> biber -> xelatex",
-      "tools": ["xelatex", "xelatex", "xelatex", "mv_pdf"]
+      "tools": ["xelatex", "xelatex", "mv_pdf"]
     }
   ],
   "latex-workshop.latex.recipe.default": "xelatex -> biber -> xelatex",

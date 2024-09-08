@@ -1,8 +1,8 @@
 
-% \documentclass{beamer}[10]
-\documentclass[handout]{beamer}[10]
+% \documentclass[handout]{beamer}[10]
+\documentclass{beamer}[10] 
 \usepackage{pgf}
-\usepackage[danish]{babel}
+\usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{beamerthemesplit}
 \usepackage{graphics,epsfig, subfigure}
@@ -16,6 +16,8 @@
 \usepackage{microtype}
 \usepackage[all]{xy}
 \usepackage{amssymb}
+\usepackage{tikz-cd}
+% \usetikzlibrary{cd}
 
 
 \definecolor{kugreen}{RGB}{50,93,61}
@@ -33,7 +35,8 @@
   \setbeamercovered{invisible}
   \setbeamertemplate{blocks}[rounded][shadow=true]
 
-\logo{\includegraphics[width=0.8cm]{KULogo}}
+% \logo{\colorbox{kugreen}{\strut \hspace{0.37cm}\includegraphics[width=0.7cm]{HUJI_LOGO}\hspace{0.25cm}}}
+\beamertemplatenavigationsymbolsempty
 %\useoutertheme{infolines} 
 \title{Equations in Hyperbolic(-esque) Groups}
 \author{Barak Ohana}
@@ -50,15 +53,23 @@
 
 
 \begin{document}
+
+%frame 1
 \begin{frame}\titlepage \vspace{-0.5cm}\end{frame}
 
 
-\section{First section}
+\section{Equations in Groups}
 
+%frame 2
 \begin{frame}
     \frametitle{Equations in Groups}
     \pause
-    Let $\Gamma$  be a group,\pause and let $\Sigma\left(x_{1},\ldots,x_{d}\right)$ a (possibly infinite) system of equation on d variables. \pause
+    \begin{itemize}
+        \item $\Gamma$ - A group\pause
+        \item $\Sigma\left(x_{1},\ldots,x_{d}\right)$ - A (possibly infinite) system of equation on d variables. \pause
+    \end{itemize}
+
+   
     We define the \textbf{set of solution of $\Sigma$ in $\Gamma$} to be the set
     \begin{equation*}
         \sol\left(\Sigma\right)=\left\{ \left(g_{1},\ldots,g_{d}\right)\in\Gamma^{d}\mid\Sigma\left(g_{1},\ldots,g_{d}\right)=_{\Gamma}1\right\} 
@@ -77,53 +88,52 @@
 
 \end{frame}
 
-
-\subsection{Sample subsection}
-
+%frame 3
 \begin{frame}
 
-\frametitle{Sample Frame Title No. 2}
-
-\begin{definition}
-    A group $\Gamma$ is called equationally noetherian if  every set of equation is equivalent to a finite subset of it. \pause i.e. if for any set of equation $\Sigma$ there exists a finite subset $\Sigma_0$ such that $\sol\rb{\Sigma} = \sol\rb{\Sigma_0}$.
-\end{definition}
-\pause
-\begin{example}\pause
-    \begin{multicols}{2}
-    \begin{itemize}
-        \item All finite Groups \pause
-        \item All linear groups\pause
-            \begin{itemize}
-                \item Thus all free groups\pause
-            \end{itemize}
-        \item Hyperbolic groups\\\pause
-        \item[] 
-        \item Free product of equationally noetherian groups\pause
-        \item Groups hyperbolic relative to equationally noetherian
-    \end{itemize}
-    \end{multicols}
-\end{example}
+    \frametitle{Equations in Groups}
+    \pause
+    \begin{definition}
+        A group $\Gamma$ is called equationally noetherian if  every set of equation is equivalent to a finite subset of it. \pause
+        
+        i.e. if for any set of equation $\Sigma$ there exists a finite subset $\Sigma_0$ such that $\sol\rb{\Sigma} = \sol\rb{\Sigma_0}$.
+    \end{definition}
+    \pause
+    \begin{example}\pause
+        \begin{multicols}{2}
+        \begin{itemize}
+            \item All finite groups \pause
+            \item All linear groups\pause
+                \begin{itemize}
+                    \item Thus all free groups\pause
+                \end{itemize}
+            \item Hyperbolic groups\\\pause
+            \item[] 
+            \item Free product of equationally noetherian groups\pause
+            \item Groups hyperbolic relative to equationally noetherian
+        \end{itemize}
+        \end{multicols}
+    \end{example}
 
 \end{frame}
 
 \section{Limit groups}
 
-
-
+%frame 4
 \begin{frame}
-    \frametitle{Limit group}
-\pause 
+    \frametitle{Limit groups}
+    \pause 
     \begin{definition}\pause
-        Let $\Gamma$ be a f.g. \pause  and $\rb{\varphi_n} \in \hom\rb{G,\Gamma}$ for some f.g. group $G$. \pause
+        Let $\Gamma$ be f.g. and $\rb{\varphi_n} \in \hom\rb{G,\Gamma}$ for some f.g. group $G$. \pause
         We define the \textbf{stable kernel} of $\rb{\varphi_n}$ to be
         \begin{equation*}
-            \sker{\varphi_n} = \cb{g\in G \mid \varphi_n \rb{g} \text{is eventually } 1}
-        \end{equation*}
-        And e define the corrsponding \textbf{limit group} by $L=\nicefrac{G}{\sker{\varphi_n}}$
+            \sker{\varphi_n} = \cb{g\in G \mid \varphi_n \rb{g} \text{  is eventually } 1}
+        \end{equation*}\pause
+        We define the corresponding \textbf{limit group} by $L=\nicefrac{G}{\sker{\varphi_n}}$
     \end{definition}
     \pause
-    \begin{lemma}
-        Let $\Gamma$ be a group then the following are equivalent:
+    \begin{lemma}\pause
+        Let $\Gamma$ be a group. The following are equivalent:\pause
 
         \begin{itemize}
             \item $\Gamma$ is equationally noetherian
@@ -134,27 +144,49 @@
     \end{lemma}
 \end{frame}
 
+%frame 5
 \begin{frame}
+    \frametitle{Limit groups}
+    \begin{overprint}
+        \onslide<2|handout:0>
+            \begin{equation*}
+                \xymatrix{
+                    G\ar@/^12pt/[ddr]^{\varphi_n} \ar@{->>}[d] &  \\
+                    L &  \\
+                    & \Gamma
+                }
+            \end{equation*}
+        \onslide<3->
+            \begin{equation*}
+                \xymatrix{
+                    G\ar@/^12pt/[ddr]^{\varphi_n} \ar@{->>}[d] &  \\
+                    L\ar@{-->}[dr]_{\hat{\varphi}_n} &  \\
+                    & \Gamma
+                }
+            \end{equation*}
+    \end{overprint}\pause\pause\pause 
     \begin{block}{Reminder}
-        $\rb{\varphi_n} \in \hom\rb{G,\Gamma}$ factors through $G\onto L$ if and only if $\sker\rb{\varphi_n} \subseteq \ker \varphi_n $. 
+        A single morphism $\varphi_n \in \hom\rb{G,\Gamma}$ factors through $G\onto L$ if and only if $\sker\varphi_n \subseteq \ker \varphi_n $. \pause
         
-        Thus we want to show that we have that eventually we have $\sker\rb{\varphi_n} \subseteq \ker \varphi_n $.
+        Thus we want to show that we have that eventually we have $\sker\varphi_n \subseteq \ker \varphi_n $.
     \end{block}
 \end{frame}
 
-\begin{frame}
+\section{Limit groups over Hyp. Groups}
+%frame 6
+\begin{frame} \frametitle{Limit groups over Hyperbolic Groups}
 
-    Let $\Gamma$ be a f.g. hypebolic group, meaning its caylel graph is hyperbolic.
+    \begin{itemize}
+        \item Let $\Gamma$ be a f.g. hypebolic group (meaning its cayley graph is hyperbolic).
+        \item \pause Let $\rb{\varphi_n} \in \hom\rb{G,\Gamma}$. 
+        \item \pause Denote 
+            \begin{equation*}
+                \nb{\varphi_n} = \max_{s\in S} d_\Gamma \rb{1,\varphi_n\rb{ s }}
+            \end{equation*}
+            i.e. the maximal length of the images of the generators of $G$ under $\varphi_n$.\pause
+    \end{itemize}
     
-    \pause Let $\rb{\varphi_n} \in \hom\rb{G,\Gamma}$. 
     
-    \pause We want to show that $\varphi_n$ eventually factors through $L$.
-    
-    \pause Denote 
-    \begin{equation*}
-        \nb{\varphi_n} = \max_{s\in S} d_\Gamma \rb{1,\varphi_n\rb{ s }}
-    \end{equation*}\pause
-    i.e. the maximal lenght of the images of the generators of $G$ under $\varphi_n$.\pause
     \begin{fact}
         If $\nb{\varphi_n}$ is a bounded sequence then $\varphi_n$ has finitely many options (as morphisms).
         
@@ -163,199 +195,158 @@
 
 \end{frame}
 
-% \begin{frame}
-%     Assume that $\nb{\varphi_n}$ is not bounded.
-%     Define at the sequence of matric spaces 
-%     \begin{equation*}
-%         X_n = \frac{1}{\nb{\varphi_n}} \cay \rb{ \Gamma } \pause  ; d_n \rb{ x,y }=\frac{1}{\nb{\varphi_n}} d_{\cay \rb{ \Gamma }} \rb{x,y}
-%     \end{equation*}
-%     \pause The rescaling of the cayley graph of $\Gamma$. \pause Now one can look at the asymptotic cone of the $X_n$'s \pause
-%     \begin{equation*}
-%                 T=\lim X_n = \nicefrac{\cb{\sb{x_n} \mid x_n\in X_n}}{\ab{\sb{x_n}\sim\sb{y_n} \iff \lim d_n \rb{x_n,y_n} = 0}}
-%     \end{equation*}
-
-%     This is a $\rr$-tree (here we used the hyperbolicity of $\cay\rb{\Gamma}$).
-%     The group $G$ has an action on $T$, and since we took equivalence classes, also $L$ acts on $T$.
-
-% \end{frame}
-
-% \begin{frame}
-%     We now call Sela and Rips, who tell us that the action $L \acts T$ means that $L$ is finitely presented relative to finitely many finitely generated subgroups $P_1,\ldots,P_d$ that fix a point in $T$.
-
-%     \begin{block}{Observation}
-%         If one shows that $\varphi_n\big\vert_{\tilde{P_i} }: \tilde{P_i} \to \Gamma$ (eventually) factors through $\tilde{P_i} \onto P_i$ then $\varphi_n$ eventually factors through $G\onto L$
-%     \end{block}
-% \end{frame}
-
-
-% \begin{frame}
-%     Let $P$ one of the subgroups of $L$ that fixes a point in $T$.
-
-%     Why does $P$ fixes a point in $T$?
-    
-    
-
-%     \begin{equation*}
-%         \xymatrix{
-%             G\ar@{->>}[d]\ar@/^/[ddr]^{\varphi_{n}} &           \\
-%             P\leq L\hspace{5ex}                                       &           \\
-%                                                     & \Gamma  
-%         }\pause \hspace{8ex}
-%         \begin{matrix}
-%         \vspace{8ex}    \\
-%         \rightsquigarrow \\
-        
-%         \end{matrix}
-%         \hspace{8ex}
-%         \xymatrix{
-%             \tilde{P}\ar@{->>}[d]\ar@/^/[ddr]^{\varphi_{n}\big\vert_{\tilde{P}}}    &        \\
-%             P                                                                       &        \\
-%                                                                                     & \Gamma            
-%         } 
-%     \end{equation*}
-% \end{frame}
-
-% \begin{frame}
-%     \frametitle{<title>}
-
-%     \begin{itemize}
-%         \item Option 1: $\nb{\varphi_{n}\big\vert_{\tilde{P}}}$ is bounded. In this case $$\varphi_{n}\big\vert_{\tilde{P}}$$ does factors through $G \onto L$
-%         \item Option 2: $\nb{\varphi_{n}\big\vert_{\tilde{P}}}$ is unbounded, but much smaller (asymptotically) then $\nb{\varphi_{n}}$. 
-        
-
-
-%         We "scaled down" all the action of $\tilde{P}$ on $\cay{\Gamma}$
-
-
-
-%     \end{itemize} 
-
-%     In option 2 we define 
-%     \begin{equation*}
-%         X_{n}^{P} = \frac{1}{\nb{\varphi_{n}\big\vert_{\tilde{P}}}} \cay \rb{ \Gamma }
-%     \end{equation*}
-%     \begin{equation*}
-%         T^{P}=\lim X_{n}^{\tilde{P}} = \nicefrac{\cb{\sb{x_n} \mid x_n\in X_{n}^{P}}}{\ab{\sb{x_n}\sim\sb{y_n} \iff \lim d_n \rb{x_n,y_n} = 0}}
-%     \end{equation*} 
-
-% \end{frame}
-
-% \begin{frame}
-%     \begin{equation*}
-%         \begin{matrix}
-%             \text{We now have} \\
-%             P\acts T^p
-%         \end{matrix}
-%               \Longrightarrow  
-%         \begin{matrix} 
-%                 \text{$P$ is finitely presented relative to} \\
-%                 \text{finitely many finitely generated subgroups} \\
-%                 \text{$Q_1,\ldots,Q_d$ that fix a point in $T^P$}
-%         \end{matrix}  
-%     \end{equation*}
-
-%     % \begin{center}
-%         \begin{figure}
-%             \begin{overprint}
-%                 \onslide<1>\centering\includegraphics[scale=0.2]{Step0.PNG}
-%                 \onslide<2>\centering\includegraphics[scale=0.2]{Step1.PNG}
-%                 \onslide<3>\centering\includegraphics[scale=0.2]{Step2.PNG}
-%                 \onslide<4>\centering\includegraphics[scale=0.2]{Step3.PNG}
-%                 \onslide<5>\centering\includegraphics[scale=0.2]{Step4.PNG}
-%                 \onslide<6->\centering\includegraphics[scale=0.2]{Step5.PNG}
-%             \end{overprint}
-%         \end{figure}
-%         % \includegraphics[scale=0.2]{./Shortening.png}
-%     % \end{center}
-% \end{frame}
-
+%frame 7
 \begin{frame}
-    \begin{block}{Theorem (Sela, Weidmann-Reinfeldt)}
+    \frametitle{Limit groups over Hyperbolic Groups}\pause
+    \begin{block}{Proposition (Sela: torsion free hyp. groups, Weidmann-Reinfeldt: all hyp. groups)}
         $L$ is finitely presented relative to finitely many finitely generated subgroups $P_1, \ldots, P_d$ such that $\nb{\varphi_{n}\big\vert_{\tilde{P}_i}}$ is bounded for every $i$.
-
-        Thus $\varphi_n$ eventually factors through $G \onto L$
     \end{block}
+    \pause
+    {\Large What we have here?}
+    \pause
 
     Finitely presented relative to $P_1, \ldots, P_d$ means that
     \begin{equation*}
         L = \ab{ P_1, \ldots, P_d, S \mid R} 
     \end{equation*}
-    where $S$ is a finite set of (extra) generators, and $R$ is a finite set of (extra) relations.
-
-    \pause We have that $\varphi_n$ eventually factors through $G\onto L$ if and only if $\varphi_{n}\big\vert_{\tilde{P}_i}$ eventually factors through $\tilde{P}_i \onto P_i$
-
-    
-    \pause But $\nb{\varphi_{n}\big\vert_{\tilde{P}_i}}$ is bounded for every $i$, meaning that $\varphi_{n}\big\vert_{\tilde{P}_i} : \tilde{P}_i \to \Gamma$ factors through $\tilde{P}_i\to P_i$
+    \pause where $S$ is a finite set of (extra) generators\pause, and $R$ is a finite set of (extra) relations.
 
 \end{frame}
 
+%frame 8
 \begin{frame}
-    \begin{block}{Theorem(Sela: torsion free hyp. groups, Weidmann-Reinfeldt: all hyp. groups)}
+    \frametitle{Limit groups over Hyperbolic Groups}
+    \vspace*{-3pt}
+    \pause
+    \begin{block}{Theorem (Sela, Weidmann-Reinfeldt)}
         If $\Gamma$ is a finitely generated hyperbolic group then $\Gamma$ is equationally noetherian.
     \end{block}
-    \vspace*{4ex}
-    But what happens with groups that are not hyperbolic?
+    \pause
+    \vspace*{-3pt}
+    \begin{proof}
+        Let $\rb{\varphi_n} \in \hom\rb{G,\Gamma}$.\pause We want to show that $\varphi_n$ eventually factors through $G \onto L$.\pause
+
+        Let $P_1,\ldots , P_d$ be the subgroups from before\pause, i.e $L$ is finitely presented relative to $P_1,\ldots , P_d$ and $\nb{\varphi_{n}\big\vert_{\tilde{P}_i}}$ are bounded sequences.\pause
+
+        For each $i$, the sequence $\nb{\varphi_{n}\big\vert_{\tilde{P}_i}}$ is bounded thus $\varphi_{n}\big\vert_{\tilde{P}_i}$ has finitely many options as homoporphism.
+        \pause This means that $\varphi_{n}\big\vert_{\tilde{P}_i} : \tilde{P}_i \to \Gamma$ factors through $\tilde{P}_i\onto P_i$. \pause Since $L$ is f.p. relative to the $P_i$'s then also $\varphi_n$ factors through $G\onto L$.
+
+    \end{proof}
+    % \vspace*{4ex}
+    % But what happens with groups that are not hyperbolic?
 \end{frame}
 
+\section*{Hyperbolic-esque Groups}
+
+%frame 9
 \begin{frame}
     \frametitle{Hyperbolic-esque Groups}
-    Let $\Gamma$ be a finitely generated group acting on hyperbolic space $X$. Under some assumption on the actions, the same lemma apply
+    What can we say about non-hyperbolic groups?
+    \pause
 
+    \begin{itemize}
+        \item Replace the assumption that $\cay\rb{ \Gamma }$ is hyperbolic by assuming that $\Gamma$ acts on hyperbolic space $X$.
+        \item \pause Under some assumption on the action, the same Proposition as before apply.
+    \end{itemize}
+    \pause
     \begin{block}{Theorem (Groves \& Hull, 2017)}
-        Let $\Gamma$ be a group action acylidrically on a hyperbolic space $X$. Let $L$ be a limit group. \\
+        \pause Let $\Gamma$ be a group acting acylindrically on a hyperbolic space $X$. \pause  
+        
+        Let $L$ be a limit group defined by $\rb{\varphi_n} \in \hom\rb{G,\Gamma}$. \\ \pause
         
         $L$ is finitely presented relative to finitely many finitely generated subgroups $P_1, \ldots, P_d$ such that $\nb{\varphi_{n}\big\vert_{\tilde{P}_i}}$ is bounded for every $i$.
-
-        Thus $\varphi_n$ eventually factors through $G \onto L$
     \end{block}
+    \pause
 
 
-
-    Since $X$ is not the cayley graph we dont know that if $\nb{\varphi_n}$ is bounded then $\varphi_n$ eventually factors through $G\onto L$.
+    Since $X$ is not the Cayley graph we dont know that if $\nb{\varphi_n}$ is bounded then $\varphi_n$ eventually factors through $G\onto L$.
 \end{frame}
 
+%frame 10
 \begin{frame}
-    Let $\Gamma$ be a group acting acylidrically on two hyperbolic metric spaces, $X_1$ and $X_2$, such that $\Gamma \acts X_1 \times X_2$ is "like" the actions of $\Gamma$ on $\cay\rb{\Gamma}$.
+    \frametitle{Group acting on a Product of hyperbolic Spaces}
+    {\Large Possible approach: Instead of having one action with assumptions, have two actions}\pause  
+    \begin{block}{Proposition (O', 2023)}
+        Let $\Gamma$ be a group acting acylindrically on two hyperbolic metric spaces, $X_1$ and $X_2$.\pause
+            
+        Assume that $\Gamma \acts X_1 \times X_2$ is like the actions of $\Gamma$ on $\cay\rb{\Gamma}$.\pause
 
-    Let $P_1, \ldots, P_d$ be the groups from the lemma before, i.e. $L$ is f.p. relative to $P_1, \ldots, P_d$ and $\nb{\varphi_{n}\big\vert_{\tilde{P}_i}}_{X_1}$ (mesured in $X_1$!) is bounded.
+        Under thouse assumption, $\Gamma$ is equationally noetherian
+    \end{block}\pause
 
-    \vspace{2ex}
+    \begin{block}{Proof.}\pause
+        For a moment, look just on the action $\Gamma \acts X_1$.\pause 
 
-    We will explain why $\varphi_{n}\big\vert_{\tilde{P}_i}$ factors through $\tilde{P}_i \onto P_i$. 
+        Let $P_1, \ldots, P_d$ be the groups from the Proposition before\pause, i.e. $L$ is f.p. relative to $P_1, \ldots, P_d$ and $\nb{\varphi_{n}\big\vert_{\tilde{P}_i}}_{X_1}$ (mesured in $X_1$!) is bounded.\pause
+
+         We will explain why $\varphi_{n}\big\vert_{\tilde{P}_i}$ factors through $\tilde{P}_i \onto P_i$. 
+    \end{block}
+    
+    
 \end{frame}
 
-
+%frame 11
 \begin{frame}
-    Look at the group $\tilde{P}_i \leq G$. The Lemma before tels us that $P_i$ is finitely presented relative to $Q_1, \ldots, Q_l$ where
-    \begin{equation*}
-        \nb{\varphi_{n}\big\vert_{\tilde{Q}_j}}_{X_2}
-    \end{equation*}
+    \frametitle{Group acting on a Product of hyperbolic Spaces}
+    \begin{block}{Proof.}
+        Restrict our attention to a specific $\tilde{P}_i \leq G$. \pause
+        Look at $\varphi_{n}\big\vert_{\tilde{P}_i}: \tilde{P}_i \to \Gamma$ but now we focus at the action on $X_2$. \pause
 
-    Now mesured relative to $X_2$!
-    Since $\tilde{Q}_l$ is a subgroup of $P_i$, then 
-    \begin{equation*}
-        \nb{\varphi_{n}\big\vert_{\tilde{Q}_j}}_{X_1 \times X_2} = \max_{s\in S} d_{X_1 \times X_2} \rb{1, \varphi_n \rb{s}}
-    \end{equation*} 
+        The Proposition before (applied to the action on $X_2$) tells us that $P_i$ is finitely presented relative to $Q_1, \ldots, Q_l$ where
+        \begin{equation*}
+            \nb{\varphi_{n}\big\vert_{\tilde{Q}_j}}_{X_2}
+        \end{equation*}
+        is bounded. Now mesured relative to $X_2$! \pause
 
-    is bounded!
-
-    Which means the $\varphi_{n}\big\vert_{\tilde{Q}_j}$ eventually factors through $\tilde{Q}_j \onto Q_j$. 
-
-    Since this is true for all $Q_1, \ldots, Q_l$, then, as before, $\varphi_{n}\big\vert_{\tilde{P}_i}$ factors through $\tilde{P}_i \onto P_i$.
-
+        Since $\tilde{Q}_l$ is a subgroup of $P_i$, then both sequences
+        \begin{equation*}
+            \nb{\varphi_{n}\big\vert_{\tilde{Q}_j}}_{X_1};\hspace{1ex}\nb{\varphi_{n}\big\vert_{\tilde{Q}_j}}_{X_2}
+        \end{equation*}
+        are bounded. 
+    \end{block}
 \end{frame}
 
+%frame 12
 \begin{frame}
-    Now since $L$ is finitely presented relative to $P_1, \ldots ,P_d$ then $\varphi_n$ eventually factors through $G\onto L$.
+    \frametitle{Group acting on a Product of hyperbolic Spaces}
+    \begin{proof}
+    
+        \pause This means that 
+        \begin{equation*}
+            \nb{\varphi_{n}\big\vert_{\tilde{Q}_j}}_{X_1 \times X_2} = \max_{s\in S} d_{X_1 \times X_2} \rb{1, \varphi_n \rb{s}}
+        \end{equation*} 
+        is bounded! \pause
 
+        We now remember that $X_1 \times X_2$ is the cayley graph of $\Gamma$, which means that $\varphi_{n}\big\vert_{\tilde{Q}_j}$ has finitely many options as a homorphism.\pause
+
+        This means $\varphi_{n}\big\vert_{\tilde{Q}_j}$ eventually factors through $\tilde{Q}_j \onto Q_j$. \pause
+        
+        Since this is true for all $Q_1, \ldots, Q_l$, then, as before, $\varphi_{n}\big\vert_{\tilde{P}_i}$ factors through $\tilde{P}_i \onto P_i$.\pause
+
+        Wrapping this up, and doing this for all $P_1, \ldots, P_d$ we get that $\varphi_n$ eventually factor through $G \onto L$
+
+    \end{proof}
+\end{frame}
+
+%frame 13
+\begin{frame}
+    \frametitle{Group acting on a Product of hyperbolic Spaces}
+
+    The Proposition works for product of any length, i.e. we have
+    \pause
     \begin{block}{Theorem (O')}
         Every f.g. group acting  geometrically and strictly acylindrically (i.e as before) on a product of hyperbolic spaces is equationally noetherian.
-    \end{block}
+    \end{block}\pause
 
     This method generalize to groups acting on colorable Hierarchically Hyperbolic spaces (whatever this means)
+    \pause
     \begin{block}{Theorem (O')}
-        Every f.g. group acting strictly acylindrical on a colorable HHG is equationally noetherian.
+        Every f.g. group acting geometrically and strictly acylindrically on a colorable HHG is equationally noetherian.
     \end{block}
+    \pause
+    \begin{center}
+        {\huge The end!}
+    \end{center}
 
 
 \end{frame}
